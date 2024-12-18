@@ -54,6 +54,7 @@ jobs:
         sudo docker image prune --all --force
         sudo apt-get update -qq
         sudo apt-get install -y --no-install-recommends \
+          software-properties-common \    # 添加此行以启用 add-apt-repository
           ack \
           antlr3 \
           asciidoc \
@@ -103,11 +104,11 @@ jobs:
           pkgconf \
           python3 \
           python3-pip \
-          python3-setuptools \    # 添加 python3-setuptools
+          python3-setuptools \        # 修正后的包名
           libpython3-dev \
-          libmesa-dev \          # 添加 libmesa-dev
-          libwayland-dev \       # 添加 libwayland-dev
-          libgraphene-dev \      # 添加 libgraphene-dev
+          libmesa-dev \              # 添加 libmesa-dev
+          libwayland-dev \           # 添加 libwayland-dev
+          libgraphene-1.0-dev \      # 修正后的包名
           qemu-utils \
           rsync \
           scons \
@@ -123,6 +124,9 @@ jobs:
           xmlto \
           xxd \
           zlib1g-dev
+        # 启用 universe 仓库
+        sudo add-apt-repository universe
+        sudo apt-get update -qq
         sudo apt-get autoremove --purge -y
         sudo apt-get clean
         sudo timedatectl set-timezone "$TZ"

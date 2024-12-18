@@ -4,6 +4,8 @@
 # File: .github/workflows/openwrt-builder.yml
 # Description: Build OpenWrt using GitHub Actions for King-Of-Knights/openwrt-6.x
 #
+# 修改后用于编译 https://github.com/King-Of-Knights/openwrt-6.x 项目，并集成 luci-theme-design 主题
+#
 # Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
 #
 # This is free software, licensed under the MIT License.
@@ -101,7 +103,11 @@ jobs:
           pkgconf \
           python3 \
           python3-pip \
+          python3-setuptools \    # 添加 python3-setuptools
           libpython3-dev \
+          libmesa-dev \          # 添加 libmesa-dev
+          libwayland-dev \       # 添加 libwayland-dev
+          libgraphene-dev \      # 添加 libgraphene-dev
           qemu-utils \
           rsync \
           scons \
